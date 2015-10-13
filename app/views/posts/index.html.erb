@@ -3,8 +3,14 @@
 <% if @posts.any? %>
 <ul>
   <% @posts.each do |post| %>
-    <li> <%= link_to post.title, post_path(post)  %>
+    <!-- <li>
+      <%= link_to post.title, post_path(post) %> (<a href="<%= post.link %>">link-to-source</a> )
+    </li> -->
+    <li>
+      <%= link_to post.title, "http://#{post.link}" %> |
+      <%= link_to "#{post.comments.count} comments", post_path(post) %>
     </li>
+    <p><%=post.score%> Points  | <%=  post.votes %> Votes </p>
   <% end %>
 </ul>
 <% end %>

@@ -7,5 +7,15 @@ class Post < ActiveRecord::Base
     self.score ||= 10
   end
 
+  def upvote
+    self.votes += 1
+  end
+
+  def downvote
+    self.votes -= 1
+  end
+
+
+
   validates_presence_of :author, :title, :link, :votes, :score
 end

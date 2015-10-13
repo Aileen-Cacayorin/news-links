@@ -35,7 +35,12 @@ class PostsController < ApplicationController
       @post.upvote
       @post.save
       redirect_to post_path
-      flash[:notice] = 'Post updated.'
+      flash[:notice] = 'Post upvoted.'
+    elsif params[:downvote] == "true"
+      @post.downvote
+      @post.save
+      redirect_to post_path
+      flash[:notice] = 'Post downvoted.'
     elsif @post.update(post_params)
       redirect_to post_path
       flash[:notice] = 'Post updated.'

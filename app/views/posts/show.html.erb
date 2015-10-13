@@ -1,6 +1,7 @@
 <h2> <%= @post.title %> </h2>
 
 <%= link_to "upvote", post_path(@post, upvote: true), method: "patch" %>
+<%= link_to "downvote", post_path(@post, downvote: true), method: "patch" %>
 
 <%= link_to "Edit", edit_post_path(@post) %>
 <%= link_to "Delete", post_path(@post ),

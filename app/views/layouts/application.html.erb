@@ -8,8 +8,13 @@
 </head>
 <body>
 <nav>
-  <%= link_to "News Links", posts_path %>
+  <h1><%= link_to "News Links", posts_path %></h1>
+  <%= link_to "Add Post", new_post_path %>
+
 </nav>
+
+<%= flash[:alert] %>
+<%= flash[:notice] %>
 
 <%= yield %>
 

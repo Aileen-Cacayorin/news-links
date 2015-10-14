@@ -15,6 +15,10 @@ class Post < ActiveRecord::Base
     self.votes -= 1
   end
 
+  def comment_points
+    self.score += 3
+  end
+
 
 
   validates_presence_of :author, :title, :link, :votes, :score

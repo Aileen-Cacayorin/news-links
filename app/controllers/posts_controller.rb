@@ -1,8 +1,18 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.all.sort_by {|post|
+      (post.score - ((Time.new - post.created_at)/100000).ceil)
+    }
+    @posts.reverse!
+    # @posts.each do |post|
+    #   days = ((Time.new - post.created_at)/100000).ceil
+    #   post.score -= days
+    # end
+
     render :index
   end
+
+
 
   def show
     @post = Post.find(params[:id])
@@ -16,7 +26,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-  
+
     if @post.save
       flash[:notice] = "Post added."
       redirect_to posts_path
